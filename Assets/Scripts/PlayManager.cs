@@ -531,7 +531,8 @@ public class PlayManager : MonoBehaviour
             allPoints[i].opponentAnimationStarted = false;
 
         }
-        //timelineManager.CancelAction(action);
+        if (player == PlayerType.Player) timelineManager.CancelAction(point.playerAction);
+        else timelineManager.CancelAction(point.opponentAction);
     }
 
     private void MoveAction(Action action)

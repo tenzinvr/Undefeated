@@ -130,6 +130,7 @@ public class TimelineManager : MonoBehaviour
     public void CancelAction(Action action)
     {
         Image iconImage = action.icon.GetComponent<Image>();
+        action.icon.SetActive(false);
         iconImage.color = new Color(1, 1, 1, 0.5f);
     }
 

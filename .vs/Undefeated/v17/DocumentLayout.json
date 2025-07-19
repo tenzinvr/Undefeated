@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\timelinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\timelinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\iconbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\iconbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\timelinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\timelinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\pointintime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -82,7 +82,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "TimelineActionIcon.cs",
               "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\TimelineActionIcon.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\TimelineActionIcon.cs",
@@ -106,7 +106,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "IconBehaviour.cs",
               "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\IconBehaviour.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\IconBehaviour.cs",
@@ -148,26 +148,27 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayManager.cs",
               "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\PlayManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayManager.cs",
-              "ViewState": "AQIAAPIBAAAAAAAAAAAAABICAAAxAAAA",
+              "ViewState": "AgIAAPsBAAAAAAAAAAAswBYCAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T10:40:47.355Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "TimelineManager.cs",
               "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\TimelineManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\TimelineManager.cs",
               "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\TimelineManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\TimelineManager.cs",
-              "ViewState": "AQIAAH8AAAAAAAAAAAAkwJkAAAAvAAAA",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAYwIkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T10:30:15Z"
+              "WhenOpened": "2025-06-20T10:30:15Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\Player.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player.cs",
@@ -175,8 +176,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Player.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T09:54:03.231Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-20T09:54:03.231Z"
             },
             {
               "$type": "Document",
