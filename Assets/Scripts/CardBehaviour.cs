@@ -1,0 +1,148 @@
+using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+{
+    public Action action;
+    //private CanvasGroup canvasGroup;
+    public GameObject timelineActionIcon;
+    private PlayManager playManager;
+    private bool actionPlayed;
+
+    //public int displayId;
+
+    public PlayerType player;
+    public int id;
+    public string cardName;
+    public int time;
+    public int damage;
+    public int knockBack;
+    public string description;
+    public CardType cardType;
+
+    [SerializeField] private float highlightScale = 1.5f;
+    [SerializeField] private float highlightOffset = 50;
+
+    public Color[] cardColours = new Color[3];
+    [SerializeField] private Image cardBackground;
+    //public Sprite sprite;
+
+    [SerializeField] private TMP_Text nameTxt;
+    [SerializeField] private TMP_Text descriptionTxt;
+    [SerializeField] private TMP_Text timeTxt;
+    [SerializeField] private TMP_Text damageTxt;
+    [SerializeField] private Image art;
+
+    private TimelineManager timelineManager;
+    private DeckManager deckManager;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        //canvasGroup = GetComponent<CanvasGroup>(); 
+        timelineManager = GameObject.FindGameObjectWithTag("Timeline").GetComponent<TimelineManager>();
+        playManager = GameObject.FindGameObjectWithTag("Timeline").GetComponent<PlayManager>();
+        GameObject playerObj = (player == PlayerType.Player) ? GameObject.FindGameObjectWithTag("Player1")
+            : GameObject.FindGameObjectWithTag("Player2");
+        deckManager = playerObj.GetComponentInChildren<DeckManager>();
+    }
+
+    public void SetAction(Action _action)
+    {
+        action = _action;
+        player = _action.playerType;
+        id = _action.id;
+        cardName = _action.name;
+        time = _action.windUpTime;
+        description = _action.description;
+        cardType = action.type;
+        //damage = card.damage;
+        //knockBack = card.knockBack;
+        //sprite = _action.sprite;
+        switch (cardType)
+        {
+            case (CardType.Attack):
+                cardBackground.color = cardColours[0];
+                break;
+            case (CardType.Defence):
+                cardBackground.color = cardColours[1];
+                break;
+            default:
+                cardBackground.color = cardColours[2];
+                break;
+        }
+
+        nameTxt.text = cardName;
+        //nameBtnTxt.text = cardName;
+        descriptionTxt.text = description;
+        if (timeTxt != null) timeTxt.text = time.ToString();
+        if (damageTxt != null) damageTxt.text = damage.ToString();
+        //art.sprite = sprite;
+
+        if (cardType != CardType.Special) timelineActionIcon.GetComponent<TimelineActionIcon>().action = action;
+        action.icon = timelineActionIcon.gameObject;
+        //Debug.Log(timelineActionIcon.GetComponent<TimelineActionIcon>().action.name);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (playManager.GetCurrentPlayerType() == player)
+        {
+            transform.localScale = new Vector3(highlightScale, highlightScale, 1);
+            transform.position = new Vector3(transform.position.x, transform.position.y + highlightOffset, -1);
+            if (!actionPlayed && cardType != CardType.Special) timelineManager.PreviewActionIcon(action);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        //Debug.Log("Pointer exit " + action.name);
+        if (gameObject.activeInHierarchy && playManager.GetCurrentPlayerType() == player)
+        {
+            transform.localScale = Vector3.one;
+            transform.position = new Vector3(transform.position.x, transform.position.y - highlightOffset, 0);
+            if (cardType != CardType.Special) timelineManager.TurnOffPreviewActionIcon();
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (playManager.playersTurn == action.playerType)
+        {
+            if (cardType == CardType.Special)
+            {
+                if (action is SpecialAction specialAction)
+                {
+                    SpecialBehaviour specialBehaviour = GetComponent<SpecialBehaviour>();
+                    specialBehaviour.Instantiate(player, action);
+                    specialBehaviour.Effect();
+                }
+                deckManager.CardUsed(gameObject);
+                deckManager.ActionUsed(action);
+                gameObject.SetActive(false);
+                return;
+            }
+            //if (actionPlayed)
+            //{
+            //    //Debug.Log("card retrieved");
+            //    deckManager.CardRetrieved(gameObject);
+            //}
+            //else
+            //{
+            //    //Debug.Log("card played");
+            //    playManager.AddActionToTurn(action);
+            //    deckManager.CardUsed(gameObject);
+            //    gameObject.SetActive(false);
+            //}
+
+            playManager.AddActionToTurn(action);
+            deckManager.CardUsed(gameObject);
+            deckManager.ActionUsed(action);
+            gameObject.SetActive(false);
+            actionPlayed = !actionPlayed;
+        }
+    }
+}

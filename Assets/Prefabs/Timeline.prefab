@@ -56,7 +56,7 @@ MonoBehaviour:
   stunIconPrefab: {fileID: 4295962164012594114, guid: 9c2c73a79bdc3a047a1facb639feb644, type: 3}
   indicator: {fileID: 0}
   isPlaying: 0
-  pointInTimeWidth: 100
+  pointInTimeWidth: 30
 --- !u!114 &6989115393430597696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
   opponentStats: {fileID: 11400000, guid: 282f0d551ded6864c9a1d4e984204a15, type: 2}
   playerHealth: {fileID: 0}
   opponentHealth: {fileID: 0}
+  stunDuration: 300
 --- !u!1 &7898658463462813502
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,9 +107,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6014960292871321431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -350, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2904365447552259668
@@ -129,7 +130,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 0
+  m_Spacing: -900
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0

@@ -1,0 +1,52 @@
+using UnityEngine;
+
+public class SpecialBehaviour : MonoBehaviour
+{
+    [SerializeField] private int CreatineNumberOfCards;
+    [SerializeField] private int proteinDamageModifier;
+
+    private Action action;
+    
+    private DeckManager deckManager;
+    private Player player;
+    private PlayManager playManager;
+
+    public void Instantiate(PlayerType playerType, Action _action)
+    {
+        action = _action;
+        action.playerState = _action.playerState;
+        string playerTag = playerType == PlayerType.Player ? "Player1" : "Player2";
+        player = GameObject.FindGameObjectWithTag(playerTag).GetComponent<Player>();
+        deckManager = player.GetComponentInChildren<DeckManager>();
+        playManager = GameObject.FindGameObjectWithTag("Timeline").GetComponent<PlayManager>();
+    }
+
+    public void Effect()
+    {
+        switch (action.name)
+        {
+            case "Creatine": Creatine(); break;
+            case "Protein Shake": ProteinShake(); break;
+            case "Feint": Feint(); break;
+        }
+    }
+
+    private void Creatine()
+    {
+        //Debug.Log("Creatine");
+        deckManager.DrawCards(CreatineNumberOfCards);
+    }
+
+    private void ProteinShake()
+    {
+        //Debug.Log("Protein");
+        player.damageModifier += proteinDamageModifier;
+    }
+
+    private void Feint()
+    {
+        //Debug.Log("Feint");
+        Action feintAction = new AttackAction(6, PlayerState.Feint, "Feint", AttackType.Feint, Hand.Rear, AttackRange.Pocket, 150, 0, 0, 0, 0, action.playerType);
+        playManager.AddActionToTurn(feintAction);
+    }
+}

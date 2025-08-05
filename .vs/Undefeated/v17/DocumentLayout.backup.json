@@ -3,36 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\timelinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\timelinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|c:\\users\\fuck microsoft\\documents\\github\\undefeated\\assets\\scripts\\playmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|c:\\users\\fuck microsoft\\documents\\github\\undefeated\\assets\\scripts\\opponentbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\opponentbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\timelineactionicon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\timelineactionicon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\carddatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\carddatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\iconbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\iconbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|c:\\users\\fuck microsoft\\documents\\github\\undefeated\\assets\\scripts\\timelinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\timelinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\healthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\healthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\breathe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\breathe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\pointintime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pointintime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\timelineactionicon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\timelineactionicon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\cardbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cardbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\action.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\action.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\actiondatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\actiondatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F401ADC5-C4F3-938D-2F87-69F8FF7A6163}|Assembly-CSharp.csproj|C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\assets\\scripts\\menubtn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -53,142 +65,186 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 241,
-          "SelectedChildIndex": 8,
+          "DockedWidth": 266,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PointInTime.cs",
-              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\PointInTime.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\PointInTime.cs",
-              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\PointInTime.cs",
-              "RelativeToolTip": "Assets\\Scripts\\PointInTime.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAQwCMAAAAlAAAA",
+              "DocumentIndex": 1,
+              "Title": "OpponentBehaviour.cs",
+              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\OpponentBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\OpponentBehaviour.cs",
+              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\OpponentBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\OpponentBehaviour.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwCcAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T13:40:56.724Z"
+              "WhenOpened": "2025-08-04T11:18:12.906Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Action.cs",
-              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\Action.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Action.cs",
-              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\Action.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Action.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAQwCAAAAAhAAAA",
+              "DocumentIndex": 4,
+              "Title": "HealthManager.cs",
+              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\HealthManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HealthManager.cs",
+              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\HealthManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HealthManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-22T08:40:48.922Z"
+              "WhenOpened": "2025-07-25T11:39:07.488Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TimelineActionIcon.cs",
-              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\TimelineActionIcon.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\TimelineActionIcon.cs",
-              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\TimelineActionIcon.cs",
-              "RelativeToolTip": "Assets\\Scripts\\TimelineActionIcon.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAxwDwAAABIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T11:34:56.26Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "MenuBehaviour.cs",
               "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\MenuBehaviour.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\MenuBehaviour.cs",
               "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\MenuBehaviour.cs",
               "RelativeToolTip": "Assets\\Scripts\\MenuBehaviour.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAZAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T11:20:57.047Z"
+              "WhenOpened": "2025-07-24T15:56:02.061Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IconBehaviour.cs",
-              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\IconBehaviour.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\IconBehaviour.cs",
-              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\IconBehaviour.cs",
-              "RelativeToolTip": "Assets\\Scripts\\IconBehaviour.cs",
-              "ViewState": "AQIAAD0AAAAAAAAAAADwv1AAAAAKAAAA",
+              "DocumentIndex": 7,
+              "Title": "TimelineActionIcon.cs",
+              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\TimelineActionIcon.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\TimelineActionIcon.cs",
+              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\TimelineActionIcon.cs",
+              "RelativeToolTip": "Assets\\Scripts\\TimelineActionIcon.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAmwG4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T11:34:56.26Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CardBehaviour.cs",
+              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\CardBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CardBehaviour.cs",
+              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\CardBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CardBehaviour.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAgwFMAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T11:11:41.416Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DeckManager.cs",
-              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\DeckManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\DeckManager.cs",
-              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\DeckManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\DeckManager.cs",
-              "ViewState": "AQIAAD0AAAAAAAAAAAA1wEsAAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "CardDatabase.cs",
+              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\CardDatabase.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CardDatabase.cs",
+              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\CardDatabase.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CardDatabase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T10:57:36.254Z"
+              "WhenOpened": "2025-06-20T10:29:57.669Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 3,
+              "Title": "TimelineManager.cs",
+              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\TimelineManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\TimelineManager.cs",
+              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\TimelineManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\TimelineManager.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAUwGUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T10:30:15Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 225,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Breathe.cs",
+              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\Breathe.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Breathe.cs",
+              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\Breathe.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Breathe.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA1wCAAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T11:37:07.638Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "MenuBtn.cs",
               "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\MenuBtn.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\MenuBtn.cs",
               "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\MenuBtn.cs",
               "RelativeToolTip": "Assets\\Scripts\\MenuBtn.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAbAAAA",
+              "ViewState": "AgIAABUAAAAAAAAAAAAgwCIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T10:43:30.886Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
+              "Title": "PointInTime.cs",
+              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\PointInTime.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PointInTime.cs",
+              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\PointInTime.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PointInTime.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAA5wCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T08:16:41.096Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player.cs",
+              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\Player.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAkwEcAAACIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T12:20:00.398Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "PlayManager.cs",
               "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\PlayManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayManager.cs",
               "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\PlayManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayManager.cs",
-              "ViewState": "AgIAAPsBAAAAAAAAAAAswBUCAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAsBAAAAAAAAAAAowBsBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T10:40:47.355Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TimelineManager.cs",
-              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\TimelineManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\TimelineManager.cs",
-              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\TimelineManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\TimelineManager.cs",
-              "ViewState": "AgIAAHAAAAAAAAAAAAAYwIkAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "Action.cs",
+              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\Action.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Action.cs",
+              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\Action.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Action.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAQwBsAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T10:30:15Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-22T08:40:48.922Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Player.cs",
-              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\Player.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Player.cs",
-              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\Player.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Player.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAAAAAA",
+              "DocumentIndex": 12,
+              "Title": "DeckManager.cs",
+              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\DeckManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DeckManager.cs",
+              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\DeckManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DeckManager.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAADwv24AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T09:54:03.231Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ActionDatabase.cs",
-              "DocumentMoniker": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\ActionDatabase.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ActionDatabase.cs",
-              "ToolTip": "C:\\Users\\Fuck Microsoft\\Documents\\GitHub\\Undefeated\\Assets\\Scripts\\ActionDatabase.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ActionDatabase.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAABhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T10:29:57.669Z"
+              "WhenOpened": "2025-06-20T10:57:36.254Z"
             }
           ]
         }

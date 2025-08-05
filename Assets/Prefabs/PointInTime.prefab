@@ -168,7 +168,7 @@ MonoBehaviour:
   opponentState: 0
   playerAction:
     playerState: 0
-    player: 0
+    playerType: 0
     id: 0
     name: 
     type: 0
@@ -176,10 +176,11 @@ MonoBehaviour:
     windUpTime: 0
     timeOfEffect: 0
     returnTime: 0
+    description: 
     icon: {fileID: 0}
   opponentAction:
     playerState: 0
-    player: 0
+    playerType: 0
     id: 0
     name: 
     type: 0
@@ -187,6 +188,7 @@ MonoBehaviour:
     windUpTime: 0
     timeOfEffect: 0
     returnTime: 0
+    description: 
     icon: {fileID: 0}
   time: 0
   index: 0
@@ -194,6 +196,8 @@ MonoBehaviour:
   opponentAnimationStarted: 0
   playerAttackFinished: 0
   opponentAttackFinished: 0
+  playerEvent: 0
+  opponentEvent: 0
   hasTakenEffect: 0
 --- !u!222 &3554476091965501567
 CanvasRenderer:

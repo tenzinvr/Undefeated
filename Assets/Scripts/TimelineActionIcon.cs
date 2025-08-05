@@ -4,20 +4,20 @@ using UnityEngine.UI;
 using TMPro;
 using System.Drawing;
 
-public class TimelineActionIcon : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler, IPointerEnterHandler
+public class TimelineActionIcon : MonoBehaviour
 {
     public Action action;
     private CanvasGroup canvasGroup;
     [SerializeField] private RectTransform windUpTimeIcon;
     [SerializeField] private RectTransform returnTimeIcon;
     [SerializeField] private TMP_Text text;
-    private Transform returnTransform;
-    private Vector3 differenceToPointer;
     private PlayManager playManager;
     public PointInTime pointInTime;
     private RectTransform rectTransform;
     [SerializeField] private float width = 30;
-    public bool isMovable = true;
+
+    [SerializeField] private GameObject backwardsBtn;
+    [SerializeField] private GameObject forwardsBtn;
 
     private TimelineManager timelineManager;
 
@@ -27,13 +27,12 @@ public class TimelineActionIcon : MonoBehaviour, IDragHandler, IEndDragHandler, 
         playManager = GameObject.FindGameObjectWithTag("Timeline").GetComponent<PlayManager>();
         timelineManager = GameObject.FindGameObjectWithTag("Timeline").GetComponent<TimelineManager>();
         canvasGroup = GetComponent<CanvasGroup>();
-        returnTransform = GetComponent<Transform>();
+        rectTransform = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(rectTransform.position);
     }
 
     public void SetAction(Action _action)
@@ -44,7 +43,7 @@ public class TimelineActionIcon : MonoBehaviour, IDragHandler, IEndDragHandler, 
 
     public void SetTransform(PointInTime point, Action action)
     {
-        Transform playerTransform = (action.player == PlayerType.Player ? point.playerTarget : point.opponentTarget).transform;
+        Transform playerTransform = (action.playerType == PlayerType.Player ? point.playerTarget : point.opponentTarget).transform;
         transform.SetParent(playerTransform, false);
         //Debug.Log("Time = " + action.timeDelay);
         rectTransform = GetComponent<RectTransform>();
@@ -63,7 +62,6 @@ public class TimelineActionIcon : MonoBehaviour, IDragHandler, IEndDragHandler, 
         windUpTimeIcon.localPosition = new Vector3((windUpWidth - totalWidth) / 2, 0, 0);
         //Debug.Log("Local pos = " + windUpTimeIcon.localPosition);
         returnTimeIcon.localPosition = new Vector3((totalWidth - returnWidth) / 2, 0, 0);
-        returnTransform = playerTransform;
         //Debug.Log("New width = " + newWidth);
         //Debug.Log(rectTransform.position);
     }
@@ -76,111 +74,91 @@ public class TimelineActionIcon : MonoBehaviour, IDragHandler, IEndDragHandler, 
         return newWidth;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    //public void AdjustWidth(int time)
+    //{
+    //    RectTransform windUpRectTransform = windUpTimeIcon.GetComponent<RectTransform>();
+    //    RectTransform returnRectTransform = windUpTimeIcon.GetComponent<RectTransform>();
+    //    if (action.initialTime < time) { }
+    //}
+
+    public void Forward()
     {
-        //Debug.Log("Begin drag");
-        if (isMovable)
+        PointInTime nextPoint = playManager.GetNextPointInTime(pointInTime);
+        if (nextPoint == null)
         {
-            canvasGroup.blocksRaycasts = false;
-            Vector3 pointerPos = new Vector3(eventData.position.x, transform.position.y, 0);
-            differenceToPointer = transform.position - pointerPos;
+            Debug.Log("next point null");
+            return;
         }
+        playManager.ChangeActionPointInTime(action, pointInTime, nextPoint);
+        SetTransform(nextPoint, action);
+        pointInTime = nextPoint;
+        backwardsBtn.SetActive(true);
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public void Backwards()
     {
-        if (isMovable)
+        Debug.Log("Current point at " + pointInTime.index);
+        PointInTime prevPoint = playManager.GetPreviousPointInTime(pointInTime);
+        Debug.Log("Prev point at " + prevPoint.index);
+        if (action.playerType == PlayerType.Player)
         {
-            //Debug.Log("dragging");
-
-            //Collider2D targetCollider = Physics2D.OverlapBox(transform.position, new Vector2(1, 1), pointInTimeLayer);
-            //if (targetCollider != null) Debug.Log(targetCollider.name);
-
-            //RaycastHit2D hit;
-            //hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.up, 1, pointInTimeLayer);
-            //if (hit) Debug.Log(hit.collider.name);
-
-            //RaycastHit raycastHit;
-            //if (Physics.Raycast(transform.position, transform.forward, out raycastHit, 1, pointInTimeLayer)) Debug.Log(raycastHit.collider.name);
-
-            //Vector3 pointerPos = new Vector3(eventData.position.x, eventData.position.y, 0);
-            transform.position = new Vector3(eventData.position.x + differenceToPointer.x, transform.position.y, transform.position.z);
+            if (prevPoint == null || (prevPoint.playerState != PlayerState.Null && prevPoint.playerState != PlayerState.Idle))
+            {
+                Debug.Log("Prev point null? " + (prevPoint == null) + "\nprev point state = " + prevPoint.playerState);
+                return;
+            }
         }
+        else
+        {
+            if (prevPoint == null || (prevPoint.opponentState != PlayerState.Null && prevPoint.playerState != PlayerState.Idle))
+            {
+                Debug.Log("Prev point null? " + (prevPoint == null) + "\nprev point state = " + prevPoint.opponentState);
+                return;
+            }
+        }
+        playManager.ChangeActionPointInTime(action, pointInTime, prevPoint);
+        SetTransform(prevPoint, action);
+        pointInTime = prevPoint;
+        if (playManager.GetPreviousPointInTime(pointInTime) == null) backwardsBtn.SetActive(false);
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void ActionCancelled(int time)
     {
-        //Vector3 worldPos;
-        //RectTransformUtility.ScreenPointToWorldPointInRectangle(
-        //    GetComponent<RectTransform>(), // your dragged UI element
-        //    eventData.position,
-        //    eventData.pressEventCamera,    // null in Screen Space - Overlay
-        //    out worldPos
-        //);
+        Debug.Log("action cancelled");
+        gameObject.SetActive(false);
+        //rectTransform.localPosition = transform.parent.
+        //Debug.Log("Local Pos = " + rectTransform.localPosition + "\n Point pos = " + parent.localPosition);
+        int windUpWidth = 0;
+        if (time <= action.windUpTime)
+        {
+           windUpWidth = SetWidth(windUpTimeIcon, time - action.initialTime);
+        }
+        int returnWidth = SetWidth(returnTimeIcon, 0);
+        //Debug.Log("Wind up width = " + windUpWidth);
+        //Debug.Log("Return width = " + returnWidth);
+        int totalWidth = windUpWidth;
+        rectTransform.sizeDelta = new Vector2(totalWidth, 20);
+        //Debug.Log("Action pos = " + totalWidth / 2);
 
-        //// Perform OverlapCircle in world space
-        //Collider2D target = Physics2D.OverlapCircle(worldPos, 0.2f, pointInTimeLayer);
+        rectTransform.localPosition = new Vector3(totalWidth / 2, 0, 0);
+        //Debug.Log("WInd up positino = " + windUpWidth / 2);
+        windUpTimeIcon.localPosition = new Vector3((windUpWidth - totalWidth) / 2, 0, 0);
+        //Debug.Log("Local pos = " + windUpTimeIcon.localPosition);
+        returnTimeIcon.localPosition = new Vector3(0, 0, 0);
+        //Debug.Log("New width = " + newWidth);
+        //Debug.Log(rectTransform.position);
 
-        //if (target != null)
-        //{
-        //    Debug.Log("Snapped to: " + target.name);
-
-        //    // Convert world position back to anchored position on the UI
-        //    Vector2 anchoredPos;
-        //    RectTransformUtility.ScreenPointToLocalPointInRectangle(
-        //        transform.parent as RectTransform,
-        //        Camera.main.WorldToScreenPoint(target.transform.position),
-        //        null, // no camera needed for Overlay canvas
-        //        out anchoredPos
-        //    );
-
-        //    // Snap the UI element to the target’s screen position
-        //    GetComponent<RectTransform>().anchoredPosition = anchoredPos;
-        //}
-        //else
-        //{
-        //    Debug.Log("No target found");
-        //}
-
-        //RaycastHit2D hit;
-        //hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), -1 * transform.forward, 1, pointInTimeLayer);
-        //Debug.Log(hit.collider.name);
-        //if (hit.collider.CompareTag("Target"))
-        //{
-        //    Debug.Log("set to target");
-        //    transform.SetParent(eventData.pointerCurrentRaycast.gameObject.transform, false);
-        //    PointInTime newPoint = eventData.pointerCurrentRaycast.gameObject.GetComponent<PointInTime>();
-        //    if (newPoint != null)
-        //    {
-        //        playManager.ChangeActionPointInTime(action, newPoint, action.timeOfEffect);
-        //        returnTransform = transform.parent.GetComponent<Transform>();
-        //        pointInTime = newPoint;
-        //    }
-        //    else Debug.Log("Target not found");
-        //}
-        //if (eventData.pointerCurrentRaycast.gameObject.CompareTag("Target"))
-        //{
-        //    Debug.Log("set to target");
-        //    transform.SetParent(eventData.pointerCurrentRaycast.gameObject.transform, false);
-        //    PointInTime newPoint = eventData.pointerCurrentRaycast.gameObject.GetComponent<PointInTime>();
-        //    if (newPoint != null)
-        //    {
-        //        playManager.ChangeActionPointInTime(action, newPoint, action.timeOfEffect);
-        //        returnTransform = transform.parent.GetComponent<Transform>();
-        //        pointInTime = newPoint;
-        //    }
-        //    else Debug.Log("Target not found");
-        //}
-        //else
-        //{
-        //    transform.SetParent(returnTransform, false);
-        //}
-        canvasGroup.blocksRaycasts = true;
     }
 
-
-    public void OnPointerEnter(PointerEventData eventData)
+    public void ActionFeinted()
     {
-        //Debug.Log("pointer enter");
+        //Debug.Log("Icon action feinted");
+    }
+
+    public void SetStatic()
+    {
+        //Debug.Log("set icon static");
+        forwardsBtn.SetActive(false);
+        backwardsBtn.SetActive(false);
     }
 }
