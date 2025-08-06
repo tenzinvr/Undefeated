@@ -14,7 +14,6 @@ public class MenuBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     [SerializeField] private GameObject iconPrefab;
     private List<Action> actions = new List<Action>();
     private List<SpecialAction> specialActions = new List<SpecialAction>();
-    private bool isSelected;
 
     private void Start()
     {
@@ -68,7 +67,6 @@ public class MenuBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        isSelected = true;
         menu.SetActive(true);
     }
 

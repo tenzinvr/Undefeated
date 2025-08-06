@@ -278,7 +278,7 @@ public class PlayManager : MonoBehaviour
     {
         if (player == PlayerType.Player)
         {
-            for (int i = currentPoint.index; i < allPoints.Length; i++)
+            for (int i = currentPoint.index + 1; i < allPoints.Length; i++)
             {
                 if (allPoints[i].playerEvent)
                 {
@@ -287,13 +287,14 @@ public class PlayManager : MonoBehaviour
                         int feintedActionEndIndex = deckManagerPlayer.feintedAction.endIndex;
                         return allPoints[feintedActionEndIndex];
                     }
+                    Debug.Log("Next event at " + i);
                     return allPoints[i];
                 }
             }
         }
         else
         {
-            for (int i = currentPoint.index; i < allPoints.Length; i++)
+            for (int i = currentPoint.index + 1; i < allPoints.Length; i++)
             {
                 if (allPoints[i].opponentEvent)
                 {
@@ -578,11 +579,11 @@ public class PlayManager : MonoBehaviour
 
     public void EndTurn()
     {
-        //Debug.Log(playersTurn.ToString() + " ended their turn");
+        Debug.Log(playersTurn.ToString() + " ended their turn");
         timelineManager.SetIconsStatic();
         if (turnActions.Count == 0)
         {
-            Debug.Log("No actions to evaluate, adding idle action");
+            //Debug.Log("No actions to evaluate, adding idle action");
             Action idleAction = new Action(GetCurrentPlayerType(), PlayerState.Idle, 50);
             Action previousAction = GetLastAction(GetCurrentPlayerType());
 

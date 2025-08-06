@@ -4,12 +4,13 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
+    [SerializeField] private Player player;
     [SerializeField] public static int maxHP = 100;
     [System.NonSerialized] public float currentHP;
     private int currentStagger = 0;
     [SerializeField] private int maxStagger = 25;
-    [SerializeField] private TMP_Text healthTxt;
-    [SerializeField] private TMP_Text staggerTxt;
+    //[SerializeField] private TMP_Text healthTxt;
+    //[SerializeField] private TMP_Text staggerTxt;
     [SerializeField] private Image healthBar;
     [SerializeField] private Image staggerBar;
     [SerializeField] private GameObject deathUI;
@@ -38,15 +39,16 @@ public class HealthManager : MonoBehaviour
 
     private void UpdateHealthBar()
     {
-        healthBar.fillAmount = currentHP / maxHP;
-        healthTxt.text = currentHP.ToString();
+        healthBar.fillAmount = (float)currentHP / maxHP;
+        //healthTxt.text = currentHP.ToString();
         //Debug.Log(healthBar.fillAmount);
     }
 
     private void UpdateStaggerBar()
     {
-        staggerBar.fillAmount = currentStagger / maxStagger;
-        staggerTxt.text = currentStagger.ToString();
+        staggerBar.fillAmount = (float)currentStagger / maxStagger;
+        //staggerTxt.text = currentStagger.ToString();
+        //Debug.Log(staggerBar.fillAmount);
     }
 
     private void Stagger(int damage)
@@ -58,13 +60,14 @@ public class HealthManager : MonoBehaviour
 
     public void Breathe(int length)
     {
-        currentStagger -= length;
+        currentStagger -= length * 2;
         currentStagger = Mathf.Clamp(currentStagger, 0, maxStagger);
         UpdateStaggerBar();
     }
 
     private void KnockOut()
     {
+        player.StartAnimation("KO");
         deathUI.SetActive(true);
     }
 }

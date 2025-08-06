@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class OpponentBehaviour : MonoBehaviour
 {
@@ -35,6 +34,7 @@ public class OpponentBehaviour : MonoBehaviour
         nextActivePoint = playManager.GetNextActivePointForPlayer(PlayerType.Player);
         if (nextActivePoint == null)
         {
+            Debug.Log("No next active point, decide on attack");
             DecideOnAttack();
             return;
         }
@@ -70,14 +70,7 @@ public class OpponentBehaviour : MonoBehaviour
         {
             Debug.Log("Card not found breathe");
             Breathe();
-            playManager.EndTurn();
         }
-    }
-
-    private IEnumerator WaitToPlay()
-    {
-        yield return new WaitForSeconds(1);
-
     }
 
     private void CheckForCreatine()
@@ -109,7 +102,7 @@ public class OpponentBehaviour : MonoBehaviour
 
     private void PlaceDefence(Action attack, Action defence)
     {
-        //Debug.Log("Place defence");
+        Debug.Log("Place defence");
         cardFound = true;
         int endPoint = attack.timeOfEffect / 50;
         int difference = defence.windUpTime / 50;
@@ -119,7 +112,7 @@ public class OpponentBehaviour : MonoBehaviour
 
     private bool TryAttackBeforePlayer(AttackAction playerAttack)
     {
-        //Debug.Log("Attack before player");
+        Debug.Log("Attack before player");
         foreach (Action action in hand)
         {
             if (action is AttackAction attackAction)
@@ -137,7 +130,7 @@ public class OpponentBehaviour : MonoBehaviour
 
     private void DecideOnAttack()
     {
-        //Debug.Log("Decide on attak");
+        Debug.Log("Decide on attak");
         if (previousAction is AttackAction prevAttack)
         {
             foreach (Action action in hand)
@@ -160,6 +153,7 @@ public class OpponentBehaviour : MonoBehaviour
         }
         else
         {
+            Debug.Log("Previous action is not attack, try to play attack");
             foreach (Action action in hand)
             {
                 if (action is AttackAction attackAction)
@@ -193,8 +187,9 @@ public class OpponentBehaviour : MonoBehaviour
 
     private void PlayCard(Action action)
     {
-        //Debug.Log("Play card");
+        Debug.Log("Play card " + action.name);
         cardFound = true;
+        deckManager.CardUsed(action);
         playManager.AddActionToTurn(action);
         previousAction = action;
     }
@@ -202,11 +197,13 @@ public class OpponentBehaviour : MonoBehaviour
     private void Breathe()
     {
         playManager.AddActionToTurn(breatheAction);
+        playManager.EndTurn();
     }
 
     private void Feint()
     {
         Action feintAction = new AttackAction(6, PlayerState.Feint, "Feint", AttackType.Feint, Hand.Rear, AttackRange.Pocket, 150, 0, 0, 0, 0, PlayerType.Opponent);
         playManager.AddActionToTurn(feintAction);
+
     }
 }

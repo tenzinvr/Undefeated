@@ -448,6 +448,7 @@
 "Assets/Scripts/CardBehaviour.cs"
 "Assets/Scripts/CardDatabase.cs"
 "Assets/Scripts/DeckManager.cs"
+"Assets/Scripts/GameManager.cs"
 "Assets/Scripts/HandPanel.cs"
 "Assets/Scripts/HealthManager.cs"
 "Assets/Scripts/InstinctPanel.cs"

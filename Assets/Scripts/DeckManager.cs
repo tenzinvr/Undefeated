@@ -1,12 +1,16 @@
 using NUnit.Framework;
-using UnityEngine;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class DeckManager : MonoBehaviour
 {
     private CardDatabase cardDatabase;
-    public Action[] deck;
-    public Action[] drawPile;
+    public Stack<Action> deck = new Stack<Action>();
+    public Stack<Action> drawPile = new Stack<Action>();
     public Stack<Action> discardPile = new Stack<Action>();
     public SpecialAction[] specialCards;
     public List<Action> cardsInPlay = new List<Action>();
@@ -17,6 +21,7 @@ public class DeckManager : MonoBehaviour
     [SerializeField] private GameObject deckPanel;
     [SerializeField] private HandPanel handPanel;
     [SerializeField] private GameObject discardPanel;
+    [SerializeField] private GameObject displayPlayedCardPanel;
     private int currentCardIndex;
 
     public GameObject retrieveActionPanel;
@@ -39,105 +44,106 @@ public class DeckManager : MonoBehaviour
     {
         cardDatabase = GameObject.FindAnyObjectByType<CardDatabase>();
         timelineManager = GameObject.FindGameObjectWithTag("Timeline").GetComponent<TimelineManager>();
-        deck = new Action[deckSize];
         usedCards = new List<GameObject>();
 
-        int i = 0;
-        deck[i++] = cardDatabase.GetCard("Jab", player);
-        deck[i++] = cardDatabase.GetCard("Jab", player);
-        deck[i++] = cardDatabase.GetCard("Jab", player);
-        deck[i++] = cardDatabase.GetCard("Jab", player);
-        deck[i++] = cardDatabase.GetCard("Jab", player);
-        deck[i++] = cardDatabase.GetCard("Cross", player);
-        deck[i++] = cardDatabase.GetCard("Cross", player);
-        deck[i++] = cardDatabase.GetCard("Cross", player);
-        deck[i++] = cardDatabase.GetCard("Cross", player);
-        deck[i++] = cardDatabase.GetCard("Cross", player);
-        deck[i++] = cardDatabase.GetCard("Lead Hook", player);
-        deck[i++] = cardDatabase.GetCard("Lead Hook", player);
-        deck[i++] = cardDatabase.GetCard("Lead Hook", player);
-        deck[i++] = cardDatabase.GetCard("Rear Hook", player);
-        deck[i++] = cardDatabase.GetCard("Rear Hook", player);
-        deck[i++] = cardDatabase.GetCard("Lead Uppercut", player);
-        deck[i++] = cardDatabase.GetCard("Lead Uppercut", player);
-        deck[i++] = cardDatabase.GetCard("Rear Uppercut", player);
-        deck[i++] = cardDatabase.GetCard("Rear Uppercut", player);
-        deck[i++] = cardDatabase.GetCard("Bob", player);
-        deck[i++] = cardDatabase.GetCard("Bob", player);
-        deck[i++] = cardDatabase.GetCard("Bob", player);
-        deck[i++] = cardDatabase.GetCard("Bob", player);
-        deck[i++] = cardDatabase.GetCard("Slip", player);
-        deck[i++] = cardDatabase.GetCard("Slip", player);
-        deck[i++] = cardDatabase.GetCard("Slip", player);
-        deck[i++] = cardDatabase.GetCard("Slip", player);
-        deck[i++] = cardDatabase.GetCard("Slip", player);
-        deck[i++] = cardDatabase.GetCard("Slip", player);
+        deck.Push(cardDatabase.GetCard("Jab", player));
+        deck.Push(cardDatabase.GetCard("Jab", player));
+        deck.Push(cardDatabase.GetCard("Jab", player));
+        deck.Push(cardDatabase.GetCard("Jab", player));
+        deck.Push(cardDatabase.GetCard("Jab", player));
+        deck.Push(cardDatabase.GetCard("Jab", player));
+        deck.Push(cardDatabase.GetCard("Cross", player));
+        deck.Push(cardDatabase.GetCard("Cross", player));
+        deck.Push(cardDatabase.GetCard("Cross", player));
+        deck.Push(cardDatabase.GetCard("Cross", player));
+        deck.Push(cardDatabase.GetCard("Cross", player));
+        deck.Push(cardDatabase.GetCard("Lead Hook", player));
+        deck.Push(cardDatabase.GetCard("Lead Hook", player));
+        deck.Push(cardDatabase.GetCard("Lead Hook", player));
+        deck.Push(cardDatabase.GetCard("Rear Hook", player));
+        deck.Push(cardDatabase.GetCard("Rear Hook", player));
+        deck.Push(cardDatabase.GetCard("Rear Hook", player));
+        deck.Push(cardDatabase.GetCard("Lead Uppercut", player));
+        deck.Push(cardDatabase.GetCard("Lead Uppercut", player));
+        deck.Push(cardDatabase.GetCard("Rear Uppercut", player));
+        deck.Push(cardDatabase.GetCard("Rear Uppercut", player));
+        deck.Push(cardDatabase.GetCard("Bob", player));
+        deck.Push(cardDatabase.GetCard("Bob", player));
+        deck.Push(cardDatabase.GetCard("Bob", player));
+        deck.Push(cardDatabase.GetCard("Slip", player));
+        deck.Push(cardDatabase.GetCard("Slip", player));
+        deck.Push(cardDatabase.GetCard("Slip", player));
+        deck.Push(cardDatabase.GetCard("Slip", player));
+        deck.Push(cardDatabase.GetCard("Slip", player));
+        deck.Push(cardDatabase.GetCard("Slip", player));
 
-        deck[i++] = cardDatabase.GetCard("Wild Swing", player);
-        deck[i++] = cardDatabase.GetCard("Wild Swing", player);
-        deck[i++] = cardDatabase.GetCard("Wild Swing", player);
-        deck[i++] = cardDatabase.GetCard("Creatine", player);
-        deck[i++] = cardDatabase.GetCard("Creatine", player);
-        deck[i++] = cardDatabase.GetCard("Creatine", player);
-        // deck[i++] = cardDatabase.GetCard("Instinct", player);
-        // deck[i++] = cardDatabase.GetCard("Instinct", player);
-        // deck[i++] = cardDatabase.GetCard("Instinct", player);
-        deck[i++] = cardDatabase.GetCard("Hard Head", player);
-        deck[i++] = cardDatabase.GetCard("Hard Head", player);
-        deck[i++] = cardDatabase.GetCard("Feint", player);
-        deck[i++] = cardDatabase.GetCard("Feint", player);
-        deck[i++] = cardDatabase.GetCard("Feint", player);
-        deck[i++] = cardDatabase.GetCard("Feint", player);
-        deck[i++] = cardDatabase.GetCard("Feint", player);
-        deck[i++] = cardDatabase.GetCard("Feint", player);
-        deck[i++] = cardDatabase.GetCard("Instinct", player);
-        deck[i++] = cardDatabase.GetCard("Instinct", player);
-        deck[i++] = cardDatabase.GetCard("Instinct", player);
-        deck[i++] = cardDatabase.GetCard("Instinct", player);
-        deck[i++] = cardDatabase.GetCard("Instinct", player);
-        deck[i++] = cardDatabase.GetCard("Instinct", player);
-        deck[i++] = cardDatabase.GetCard("Instinct", player);
-        deck[i++] = cardDatabase.GetCard("Instinct", player);
-        deck[i++] = cardDatabase.GetCard("Instinct", player);
+        deck.Push(cardDatabase.GetCard("Wild Swing", player));
+        deck.Push(cardDatabase.GetCard("Wild Swing", player));
+        deck.Push(cardDatabase.GetCard("Creatine", player));
+        deck.Push(cardDatabase.GetCard("Creatine", player));
+        deck.Push(cardDatabase.GetCard("Creatine", player));
+        deck.Push(cardDatabase.GetCard("Instinct", player));
+        deck.Push(cardDatabase.GetCard("Instinct", player));
+        deck.Push(cardDatabase.GetCard("Hard Head", player));
+        deck.Push(cardDatabase.GetCard("Hard Head", player));
+        deck.Push(cardDatabase.GetCard("Feint", player));
+        deck.Push(cardDatabase.GetCard("Feint", player));
+        deck.Push(cardDatabase.GetCard("Feint", player));
+        deck.Push(cardDatabase.GetCard("Feint", player));
+        deck.Push(cardDatabase.GetCard("Feint", player));
+        deck.Push(cardDatabase.GetCard("Feint", player));
 
+        deckSize = deck.Count;
 
-        drawPile = deck;
-        currentCardIndex = 0;
-        deckSize = drawPile.Length;
-        //Debug.Log(deckSize);
         Shuffle();
-        // foreach (Action action in deck)
-        // {
-        //     if (action != null) Debug.Log(action.name);
-        //     else { Debug.Log("action null"); }
-        // }
         DrawCards(handSize);
     }
 
     public void Shuffle()
     {
-        int randomIndex = Random.Range(0, deckSize);
-        Action currentCard = drawPile[0];
-        for (int i = 0; i < deckSize; i++)
+        Action[] temp = deck.ToArray();
+        Array.Reverse(temp); // Optional but recommended to preserve stack order logic
+
+        for (int i = temp.Length - 1; i > 0; i--)
         {
-            randomIndex = Random.Range(i, deckSize);
-            currentCard = drawPile[i];
-            drawPile[i] = drawPile[randomIndex];
-            drawPile[randomIndex] = currentCard;
-            //Debug.Log("Card at " + i + " swapped with card at " + randomIndex);
+            int randomIndex = UnityEngine.Random.Range(0, i + 1);
+            (temp[i], temp[randomIndex]) = (temp[randomIndex], temp[i]);
         }
+
+        // Refill drawPile
+        drawPile.Clear(); // Optional if not empty
+        for (int i = 0; i < temp.Length; i++)
+        {
+            drawPile.Push(temp[i]);
+        }
+    }
+
+    private void Reshuffle()
+    {
+        //Debug.Log("Reshuffling deck");
+        drawPile.Clear();
+        while (discardPile.Count > 0)
+        {
+            Action action = discardPile.Pop();
+            drawPile.Push(action);
+        }
+        Shuffle();
     }
 
     public void DrawCards(int numberOfCards)
     {
         for (int i = 0; i <= numberOfCards; i++)
         {
-            Action drawnCard = drawPile[currentCardIndex++];
+            if (drawPile.Count == 0)
+            {
+                Debug.Log("No more cards to draw");
+                Reshuffle();
+            }
+            Action drawnCard = drawPile.Pop();
             //Debug.Log(drawnCard == null);
             AddCardToHand(drawnCard);
             cardsInHand.Add(drawnCard);
             //Debug.Log(cardsInHand.Count);
-
         }
     }
 
@@ -173,8 +179,30 @@ public class DeckManager : MonoBehaviour
 
     public void CardUsed(GameObject card)
     {
-        card.transform.SetParent(discardPanel.transform, false);
+        //Debug.Log("Card used: " + card.name);
+        StartCoroutine(DisplayUsedCard(card));
+    }
+
+    public void CardUsed(Action action)
+    {
+        Debug.Log("Card used: " + action.name);
+        GameObject cardObj = Instantiate(cardPrefab, displayPlayedCardPanel.transform);
+        cardObj.name = "New card";
+        CardBehaviour cardBehaviour = cardObj.GetComponent<CardBehaviour>();
+        if (cardBehaviour != null)
+        {
+            //cardBehaviour.displayId = drawnCard.id;
+            cardBehaviour.SetAction(action);
+        }
+        StartCoroutine(DisplayUsedCard(cardObj));
+    }
+
+    private IEnumerator DisplayUsedCard(GameObject card)
+    { 
+        card.transform.SetParent(displayPlayedCardPanel.transform, false);
         handPanel.SetCardPositions();
+        yield return new WaitForSeconds(1);
+        card.transform.SetParent(discardPanel.transform, false);
     }
 
     public void ActionUsed(Action action)

@@ -171,6 +171,7 @@ public class TimelineManager : MonoBehaviour
         timelineActionIcon.action.playerType = player;
         timelineActionIcon.pointInTime = point;
         breatheAction.icon = newBreatheIcon;
+        allIcons.Add(newBreatheIcon);
         //Debug.Log("add stun to point = " + point.time);
         timelineActionIcon.SetTransform(point, breatheAction);
     }
@@ -184,6 +185,7 @@ public class TimelineManager : MonoBehaviour
         timelineActionIcon.action.playerType = player;
         timelineActionIcon.pointInTime = point;
         feintAction.icon = newFeintheIcon;
+        allIcons.Add(newFeintheIcon);
         //Debug.Log("add stun to point = " + point.time);
         timelineActionIcon.SetTransform(point, feintAction);
     }
@@ -196,6 +198,7 @@ public class TimelineManager : MonoBehaviour
             GameObject icon = playerType == PlayerType.Player ? point.playerAction.icon : point.opponentAction.icon;
             //Debug.Log("Removing icon for player action " + point.playerAction.name);
             Debug.Log("Icon null? " + (icon == null));
+            allIcons.Remove(icon);
             if (icon != null) icon.SetActive(false);
         }
     }

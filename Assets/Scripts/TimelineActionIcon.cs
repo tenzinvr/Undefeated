@@ -1,8 +1,6 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using TMPro;
-using System.Drawing;
+using UnityEngine.UI;
 
 public class TimelineActionIcon : MonoBehaviour
 {
@@ -15,6 +13,10 @@ public class TimelineActionIcon : MonoBehaviour
     public PointInTime pointInTime;
     private RectTransform rectTransform;
     [SerializeField] private float width = 30;
+    [SerializeField] private Image background;
+    [SerializeField] private Color defenceColour;
+    [SerializeField] private Color attackColour;
+    [SerializeField] private Color specialColour;
 
     [SerializeField] private GameObject backwardsBtn;
     [SerializeField] private GameObject forwardsBtn;
@@ -39,6 +41,19 @@ public class TimelineActionIcon : MonoBehaviour
     {
         action = _action;
         text.text = action.name;
+        switch (action.type)
+        {
+            case (CardType.Attack):
+                background.color = attackColour;
+                break;
+            case (CardType.Defence):
+                background.color = defenceColour;
+                break;
+            default:
+                background.color = specialColour;
+                break;
+        }
+
     }
 
     public void SetTransform(PointInTime point, Action action)
@@ -158,7 +173,7 @@ public class TimelineActionIcon : MonoBehaviour
     public void SetStatic()
     {
         //Debug.Log("set icon static");
-        forwardsBtn.SetActive(false);
-        backwardsBtn.SetActive(false);
+        if (forwardsBtn != null) forwardsBtn.SetActive(false);
+        if (backwardsBtn != null) backwardsBtn.SetActive(false);
     }
 }

@@ -12,6 +12,7 @@ public class InstinctPanel : MonoBehaviour
 
     public void DisplayPanel()
     {
+        Debug.Log("Displaying instinct panel for " + playerType);
         List<Action> attackActions = deckManager.GetActionsOfType(CardType.Attack, playerType);
         List<Action> defenceActions = deckManager.GetActionsOfType(CardType.Defence, playerType);
         foreach (Action action in attackActions)

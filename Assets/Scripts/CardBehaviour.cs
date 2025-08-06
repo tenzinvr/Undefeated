@@ -17,8 +17,6 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public PlayerType playerType;
     public int id;
     public string cardName;
-    public int time;
-    public int damage;
     public int knockBack;
     public string description;
     public CardType cardType;
@@ -32,8 +30,6 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     [SerializeField] private TMP_Text nameTxt;
     [SerializeField] private TMP_Text descriptionTxt;
-    [SerializeField] private TMP_Text timeTxt;
-    [SerializeField] private TMP_Text damageTxt;
     [SerializeField] private Image art;
 
     private TimelineManager timelineManager;
@@ -56,7 +52,6 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         playerType = _action.playerType;
         id = _action.id;
         cardName = _action.name;
-        time = _action.windUpTime;
         description = _action.description;
         cardType = action.type;
         //damage = card.damage;
@@ -78,8 +73,6 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         nameTxt.text = cardName;
         //nameBtnTxt.text = cardName;
         descriptionTxt.text = description;
-        if (timeTxt != null) timeTxt.text = time.ToString();
-        if (damageTxt != null) damageTxt.text = damage.ToString();
         //art.sprite = sprite;
 
         if (cardType != CardType.Special) timelineActionIcon.GetComponent<TimelineActionIcon>().action = action;
