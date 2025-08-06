@@ -450,6 +450,7 @@
 "Assets/Scripts/DeckManager.cs"
 "Assets/Scripts/HandPanel.cs"
 "Assets/Scripts/HealthManager.cs"
+"Assets/Scripts/InstinctPanel.cs"
 "Assets/Scripts/MenuBehaviour.cs"
 "Assets/Scripts/MenuBtn.cs"
 "Assets/Scripts/OpponentBehaviour.cs"

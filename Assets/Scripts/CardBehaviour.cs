@@ -14,7 +14,7 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     //public int displayId;
 
-    public PlayerType player;
+    public PlayerType playerType;
     public int id;
     public string cardName;
     public int time;
@@ -45,7 +45,7 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         //canvasGroup = GetComponent<CanvasGroup>(); 
         timelineManager = GameObject.FindGameObjectWithTag("Timeline").GetComponent<TimelineManager>();
         playManager = GameObject.FindGameObjectWithTag("Timeline").GetComponent<PlayManager>();
-        GameObject playerObj = (player == PlayerType.Player) ? GameObject.FindGameObjectWithTag("Player1")
+        GameObject playerObj = (playerType == PlayerType.Player) ? GameObject.FindGameObjectWithTag("Player1")
             : GameObject.FindGameObjectWithTag("Player2");
         deckManager = playerObj.GetComponentInChildren<DeckManager>();
     }
@@ -53,7 +53,7 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void SetAction(Action _action)
     {
         action = _action;
-        player = _action.playerType;
+        playerType = _action.playerType;
         id = _action.id;
         cardName = _action.name;
         time = _action.windUpTime;
@@ -89,18 +89,23 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (playManager.GetCurrentPlayerType() == player)
+        if (playManager.GetCurrentPlayerType() == playerType)
         {
             transform.localScale = new Vector3(highlightScale, highlightScale, 1);
             transform.position = new Vector3(transform.position.x, transform.position.y + highlightOffset, -1);
-            if (!actionPlayed && cardType != CardType.Special) timelineManager.PreviewActionIcon(action);
+            if (!actionPlayed && cardType != CardType.Special)
+            {
+                timelineManager.PreviewActionIcon(action);
+                Player player = playManager.GetCurrentPlayer();
+                player.StartAnimation(action.name);
+            }
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         //Debug.Log("Pointer exit " + action.name);
-        if (gameObject.activeInHierarchy && playManager.GetCurrentPlayerType() == player)
+        if (gameObject.activeInHierarchy && playManager.GetCurrentPlayerType() == playerType)
         {
             transform.localScale = Vector3.one;
             transform.position = new Vector3(transform.position.x, transform.position.y - highlightOffset, 0);
@@ -112,12 +117,18 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (playManager.playersTurn == action.playerType)
         {
+            Transform parentTransform = transform.parent;
+            if (parentTransform.parent.CompareTag("InstinctPanel"))
+            {
+                GameObject instinctPanel = parentTransform.parent.gameObject;
+                instinctPanel.SetActive(false);
+            }
             if (cardType == CardType.Special)
             {
                 if (action is SpecialAction specialAction)
                 {
                     SpecialBehaviour specialBehaviour = GetComponent<SpecialBehaviour>();
-                    specialBehaviour.Instantiate(player, action);
+                    specialBehaviour.Instantiate(playerType, action);
                     specialBehaviour.Effect();
                 }
                 deckManager.CardUsed(gameObject);
@@ -125,18 +136,6 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 gameObject.SetActive(false);
                 return;
             }
-            //if (actionPlayed)
-            //{
-            //    //Debug.Log("card retrieved");
-            //    deckManager.CardRetrieved(gameObject);
-            //}
-            //else
-            //{
-            //    //Debug.Log("card played");
-            //    playManager.AddActionToTurn(action);
-            //    deckManager.CardUsed(gameObject);
-            //    gameObject.SetActive(false);
-            //}
 
             playManager.AddActionToTurn(action);
             deckManager.CardUsed(gameObject);

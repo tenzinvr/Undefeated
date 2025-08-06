@@ -280,14 +280,30 @@ public class PlayManager : MonoBehaviour
         {
             for (int i = currentPoint.index; i < allPoints.Length; i++)
             {
-                if (allPoints[i].playerEvent) return allPoints[i];
+                if (allPoints[i].playerEvent)
+                {
+                    if (allPoints[i].playerState == PlayerState.Feint)
+                    {
+                        int feintedActionEndIndex = deckManagerPlayer.feintedAction.endIndex;
+                        return allPoints[feintedActionEndIndex];
+                    }
+                    return allPoints[i];
+                }
             }
         }
         else
         {
             for (int i = currentPoint.index; i < allPoints.Length; i++)
             {
-                if (allPoints[i].opponentEvent) return allPoints[i];
+                if (allPoints[i].opponentEvent)
+                {
+                    if (allPoints[i].opponentState == PlayerState.Feint)
+                    {
+                        int feintedActionEndIndex = deckManagerOpponent.feintedAction.endIndex;
+                        return allPoints[feintedActionEndIndex];
+                    }
+                    return allPoints[i];
+                }
             }
         }
         return null;
@@ -303,8 +319,6 @@ public class PlayManager : MonoBehaviour
     {
         //Debug.Log("Add action to point in time from " + initialIndex + " to " + (initialIndex + indicesActive));
         int windUpIndices = initialIndex + indicesActive;
-        if (action.playerType == PlayerType.Player) { allPoints[initialIndex + 1].playerAnimationStarted = true; }
-        else { allPoints[initialIndex + 1].opponentAnimationStarted = true; }
         allPoints[initialIndex].actionStart = true;
         for (int i = initialIndex + 1; i <= windUpIndices; i++)
         {
@@ -312,6 +326,9 @@ public class PlayManager : MonoBehaviour
             allPoints[i].ClearPoint(action.playerType);
             allPoints[i].AddToPoint(action, action.playerType);
         }
+        //Debug.Log("Action name = " + action.name);
+        if (action.playerType == PlayerType.Player) { allPoints[initialIndex].playerAnimationName = action.name; }
+        else { allPoints[initialIndex].opponentAnimationName = action.name; }
 
         if (action.type == CardType.Attack)
         {
@@ -386,7 +403,7 @@ public class PlayManager : MonoBehaviour
                 allPoints[i].AddToPoint(nullAction, player);
                 //allPoints[i].playerAttackFinished = false;
                 allPoints[i].playerEvent = false;
-                allPoints[i].playerAnimationStarted = false;
+                allPoints[i].playerAnimationName = null;
             }
         }
         else
@@ -397,7 +414,7 @@ public class PlayManager : MonoBehaviour
                 allPoints[i].AddToPoint(nullAction, player);
                 //allPoints[i].opponentAttackFinished = false;
                 allPoints[i].opponentEvent = false;
-                allPoints[i].opponentAnimationStarted = false;
+                allPoints[i].opponentAnimationName = null;
             }
         }
     }
@@ -467,9 +484,12 @@ public class PlayManager : MonoBehaviour
             if (prevAttackFound)
             {
                 Debug.Log("Adding feint to attack " + prevAttack.name + " at index " + prevAttack.initialIndex);
-                timelineManager.AddFeintIcon(playersTurn, allPoints[prevAttack.initialIndex], action);
-                TimelineActionIcon timelineActionIcon = prevAttack.icon.GetComponent<TimelineActionIcon>();
-                if (timelineActionIcon != null) timelineActionIcon.ActionFeinted();
+                if (playersTurn == PlayerType.Player)
+                {
+                    timelineManager.AddFeintIcon(playersTurn, allPoints[prevAttack.initialIndex], action);
+                    TimelineActionIcon timelineActionIcon = prevAttack.icon.GetComponent<TimelineActionIcon>();
+                    if (timelineActionIcon != null) timelineActionIcon.ActionFeinted();
+                }
                 RemoveActionFromPointsInTime(GetCurrentPlayerType(), allPoints[prevAttack.initialIndex]);
                 AddActionToPointsInTime(action, prevAttack.initialIndex, action.windUpTime / 50, 0);
                 DeckManager deckManager = GetCurrentPlayerType() == PlayerType.Player ? deckManagerPlayer : deckManagerOpponent;
@@ -546,11 +566,11 @@ public class PlayManager : MonoBehaviour
         {
             if (player == player1)
             {
-                if (allPoints[i].playerAnimationStarted) { }//playerPreview.AddToAnimations(allPoints[i].playerAction.name);
+                //if (allPoints[i].playerAnimationStarted) { }//playerPreview.AddToAnimations(allPoints[i].playerAction.name);
             }
             else
             {
-                if (allPoints[i].playerAnimationStarted) { }//playerPreview.AddToAnimations(allPoints[i].opponentAction.name);
+                //if (allPoints[i].playerAnimationStarted) { }//playerPreview.AddToAnimations(allPoints[i].opponentAction.name);
             }
         }
         //playerPreview.PreviewTurn();
@@ -562,7 +582,7 @@ public class PlayManager : MonoBehaviour
         timelineManager.SetIconsStatic();
         if (turnActions.Count == 0)
         {
-            //Debug.Log("Add idle");
+            Debug.Log("No actions to evaluate, adding idle action");
             Action idleAction = new Action(GetCurrentPlayerType(), PlayerState.Idle, 50);
             Action previousAction = GetLastAction(GetCurrentPlayerType());
 
@@ -572,7 +592,7 @@ public class PlayManager : MonoBehaviour
 
             idleAction.initialTime = allPoints[lastPlayerActionIndex].time;
             int indicesActive = lastOpponentActionIndex - lastPlayerActionIndex;
-            //AddActionToPointsInTime(idleAction, lastPlayerActionIndex, indicesActive, 0);
+            AddActionToPointsInTime(idleAction, lastPlayerActionIndex, indicesActive, 0);
         }
         CheckAllPoints();
         ClearTurnList();
@@ -709,8 +729,10 @@ public class PlayManager : MonoBehaviour
         if (point.evaluated) return;
         Action playerAction = point.playerAction;
         Action opponentAction = point.opponentAction;
-        if (point.playerAnimationStarted) player1.StartAnimation(point.playerAction.name);
-        if (point.opponentAnimationStarted) player2.StartAnimation(point.opponentAction.name);
+        //Debug.Log("Evaluate point " + point.index + " player animation? " + point.playerAnimationName);
+        //Debug.Log("Evaluate point " + point.index + " opponent animation? " + point.opponentAnimationName);
+        if (point.playerAnimationName != null) player1.StartAnimation(point.playerAnimationName);
+        if (point.opponentAnimationName != null) player2.StartAnimation(point.opponentAnimationName);
         if (point.playerEvent)
         {
             //Debug.Log("Player event " + playerAction.name);
@@ -721,7 +743,7 @@ public class PlayManager : MonoBehaviour
                     Debug.Log("Evaluate feint");
                     Action feintedAction = deckManagerPlayer.feintedAction;
                     feintedAction.icon.SetActive(false);
-                    deckManagerPlayer.AddCard(feintedAction);
+                    deckManagerPlayer.AddCardToHand(feintedAction);
                 }
                 else if (playerAction is AttackAction playerAttack)
                 {
@@ -743,10 +765,10 @@ public class PlayManager : MonoBehaviour
             {
                 if (opponentAction.name == "Feint")
                 {
-                    Debug.Log("Evaluate feint");
+                    //Debug.Log("Evaluate feint");
                     Action feintedAction = deckManagerOpponent.feintedAction;
                     feintedAction.icon.SetActive(false);
-                    deckManagerOpponent.AddCard(feintedAction);
+                    deckManagerOpponent.AddCardToHand(feintedAction);
                 }
                 else if (opponentAction is AttackAction opponentAttack)
                 {
@@ -803,7 +825,7 @@ public class PlayManager : MonoBehaviour
 
     private void PlayerHit(PlayerType playerType, Effect effect, AttackAction attackAction, PointInTime point)
     {
-        Debug.Log(playerType + " hit");
+        //Debug.Log(playerType + " hit");
         if (effect == Effect.Missed) return;
         Player playerHit = (playerType == PlayerType.Player) ? player1 : player2;
         Player attackingPlayer = (playerType == PlayerType.Player) ? player2 : player1;

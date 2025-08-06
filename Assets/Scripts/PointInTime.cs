@@ -12,8 +12,8 @@ public class PointInTime : MonoBehaviour
     public int time;
     public int index;
     public bool actionStart;
-    public bool playerAnimationStarted;
-    public bool opponentAnimationStarted;
+    public string playerAnimationName;
+    public string opponentAnimationName;
     public bool playerAttackFinished;
     public bool opponentAttackFinished;
     public bool playerEvent;
@@ -57,16 +57,16 @@ public class PointInTime : MonoBehaviour
         {
             playerAction = nullAction;
             playerState = PlayerState.Null;
-            playerAnimationStarted = false;
             playerAttackFinished = false;
+            playerAnimationName = null;
             playerEvent = false;
         }
         else
         {
             opponentAction = nullAction;
             opponentState = PlayerState.Null;
-            opponentAnimationStarted = false;
             opponentAttackFinished = false;
+            opponentAnimationName = null;
             opponentEvent = false;
         }
     }

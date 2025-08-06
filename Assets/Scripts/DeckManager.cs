@@ -79,9 +79,6 @@ public class DeckManager : MonoBehaviour
         deck[i++] = cardDatabase.GetCard("Creatine", player);
         deck[i++] = cardDatabase.GetCard("Creatine", player);
         deck[i++] = cardDatabase.GetCard("Creatine", player);
-        deck[i++] = cardDatabase.GetCard("Protein Shake", player);
-        deck[i++] = cardDatabase.GetCard("Protein Shake", player);
-        deck[i++] = cardDatabase.GetCard("Protein Shake", player);
         // deck[i++] = cardDatabase.GetCard("Instinct", player);
         // deck[i++] = cardDatabase.GetCard("Instinct", player);
         // deck[i++] = cardDatabase.GetCard("Instinct", player);
@@ -93,6 +90,15 @@ public class DeckManager : MonoBehaviour
         deck[i++] = cardDatabase.GetCard("Feint", player);
         deck[i++] = cardDatabase.GetCard("Feint", player);
         deck[i++] = cardDatabase.GetCard("Feint", player);
+        deck[i++] = cardDatabase.GetCard("Instinct", player);
+        deck[i++] = cardDatabase.GetCard("Instinct", player);
+        deck[i++] = cardDatabase.GetCard("Instinct", player);
+        deck[i++] = cardDatabase.GetCard("Instinct", player);
+        deck[i++] = cardDatabase.GetCard("Instinct", player);
+        deck[i++] = cardDatabase.GetCard("Instinct", player);
+        deck[i++] = cardDatabase.GetCard("Instinct", player);
+        deck[i++] = cardDatabase.GetCard("Instinct", player);
+        deck[i++] = cardDatabase.GetCard("Instinct", player);
 
 
         drawPile = deck;
@@ -128,24 +134,39 @@ public class DeckManager : MonoBehaviour
         {
             Action drawnCard = drawPile[currentCardIndex++];
             //Debug.Log(drawnCard == null);
-            AddCard(drawnCard);
+            AddCardToHand(drawnCard);
             cardsInHand.Add(drawnCard);
             //Debug.Log(cardsInHand.Count);
 
         }
     }
 
-    public void AddCard(Action card)
+    public void AddCardToHand(Action action)
     {
+        //Debug.Log("Adding card to hand: " + action.name);
         GameObject cardObj;
-        if (card.type != CardType.Special) cardObj = Instantiate(cardPrefab, handPanel.transform);
+        //Debug.Log("Card type: " + action.type.ToString());
+        //Debug.Log("Hand panel null? " + (handPanel == null).ToString());
+        if (action.type != CardType.Special) cardObj = Instantiate(cardPrefab, handPanel.transform);
         else cardObj = Instantiate(specialCardPrefab, handPanel.transform);
         handPanel.AddCard(cardObj);
         CardBehaviour cardBehaviour = cardObj.GetComponent<CardBehaviour>();
         if (cardBehaviour != null)
         {
             //cardBehaviour.displayId = drawnCard.id;
-            cardBehaviour.SetAction(card);
+            cardBehaviour.SetAction(action);
+        }
+        else { Debug.Log("Card behaviour null"); }
+    }
+
+    public void AddCardToPanel(Transform panelTransform, Action action)
+    {
+        GameObject cardObj = Instantiate(cardPrefab, panelTransform);
+        CardBehaviour cardBehaviour = cardObj.GetComponent<CardBehaviour>();
+        if (cardBehaviour != null)
+        {
+            //cardBehaviour.displayId = drawnCard.id;
+            cardBehaviour.SetAction(action);
         }
         else { Debug.Log("Card behaviour null"); }
     }
@@ -203,9 +224,11 @@ public class DeckManager : MonoBehaviour
     public List<Action> GetActionsOfType(CardType type, PlayerType player)
     {
         List<Action> actions = new List<Action>();
+        //Debug.Log("Deck size = " + deck.Length);
         foreach (Action card in deck)
         {
-            if (card.playerType == player && card.type == type) actions.Add(card);
+            //Debug.Log("Checking card: " + card.name + " of type " + card.type + " for player " + card.playerType);
+            if (card.playerType == player && card.type == type && !actions.Contains(card)) actions.Add(card);
         }
         return actions;
     }

@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 
     public void StartAnimation(string name)
     {
-        //Debug.Log("play animation");
+        //Debug.Log("play animation " + name);
         if (name != null) animator.SetTrigger(name);
     }
 
@@ -58,30 +58,6 @@ public class Player : MonoBehaviour
         damageModifier = 0;
         return mod;
     }
-
-    // public void StepIn()
-    // {
-    //     if (playerType == PlayerType.Player)
-    //     {
-    //         SetPosition(position + 1);
-    //     }
-    //     else SetPosition(position - 1);
-    // }
-
-    // public void StepOut()
-    // {
-    //     if (playerType == PlayerType.Player)
-    //     {
-    //         SetPosition(position - 1);
-    //     }
-    //     else SetPosition(position + 1);
-    // }
-
-    // public void SetPosition(int newPosition)
-    // {
-    //     position = newPosition; 
-    //     transform.localPosition = new Vector3(playManager.positions[newPosition], transform.localPosition.y, transform.localPosition.z);
-    // }
 
     public void Breathe(int length)
     {

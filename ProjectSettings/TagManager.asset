@@ -10,6 +10,7 @@ TagManager:
   - Timeline
   - DeathUI
   - Card
+  - InstinctPanel
   layers:
   - Default
   - TransparentFX

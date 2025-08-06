@@ -6,6 +6,7 @@ public class SpecialBehaviour : MonoBehaviour
     [SerializeField] private int proteinDamageModifier;
 
     private Action action;
+    private GameObject instinctPanel;
     
     private DeckManager deckManager;
     private Player player;
@@ -19,6 +20,8 @@ public class SpecialBehaviour : MonoBehaviour
         player = GameObject.FindGameObjectWithTag(playerTag).GetComponent<Player>();
         deckManager = player.GetComponentInChildren<DeckManager>();
         playManager = GameObject.FindGameObjectWithTag("Timeline").GetComponent<PlayManager>();
+        instinctPanel = GameObject.FindGameObjectWithTag("InstinctPanel");
+        //Debug.Log("Instinct panel null? " + (instinctPanel == null));
     }
 
     public void Effect()
@@ -28,6 +31,7 @@ public class SpecialBehaviour : MonoBehaviour
             case "Creatine": Creatine(); break;
             case "Protein Shake": ProteinShake(); break;
             case "Feint": Feint(); break;
+            case "Instinct": Instinct(); break;
         }
     }
 
@@ -48,5 +52,13 @@ public class SpecialBehaviour : MonoBehaviour
         //Debug.Log("Feint");
         Action feintAction = new AttackAction(6, PlayerState.Feint, "Feint", AttackType.Feint, Hand.Rear, AttackRange.Pocket, 150, 0, 0, 0, 0, action.playerType);
         playManager.AddActionToTurn(feintAction);
+    }
+
+    private void Instinct() 
+    {
+        //Debug.Log("Instinct");
+        // Can be played as any attack or defence card
+        instinctPanel.SetActive(true);
+        instinctPanel.GetComponent<InstinctPanel>().DisplayPanel();
     }
 }
