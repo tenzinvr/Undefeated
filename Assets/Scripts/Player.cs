@@ -14,9 +14,10 @@ public class Player : MonoBehaviour
     public int health = 100;
     public int timeModifier = 0;
     public int damageModifier;
+    public int accuracyModifier;
     public bool isBlocking;
-    public Distance distance;
-    public Stance stance;
+    //public Distance distance;
+    //public Stance stance;
     public int lastPointEvaluated = 0;
     public int lastPointToEvaluate = 0;
     public int position;
@@ -25,15 +26,17 @@ public class Player : MonoBehaviour
 
     private TimelineManager timelineManager;
     private PlayManager playManager;
-    private DeckManager deckManager;
+    public DeckManager deckManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //Debug.Log("player start");
         animator = GetComponentInChildren<Animator>();
         timelineManager = GameObject.FindGameObjectWithTag("Timeline").GetComponent<TimelineManager>();
         playManager = GameObject.FindGameObjectWithTag("Timeline").GetComponent<PlayManager>();
-        deckManager = GetComponentInChildren<DeckManager>();
+        if (playerType == PlayerType.Player) deckManager.Initiate();
+        //deckManager = GetComponentInChildren<DeckManager>();
     }
 
     public void StartAnimation(string name)
@@ -56,6 +59,13 @@ public class Player : MonoBehaviour
     {
         int mod = damageModifier;
         damageModifier = 0;
+        return mod;
+    }
+
+    public int GetAccuracyModifier()
+    {
+        int mod = accuracyModifier;
+        accuracyModifier = 0;
         return mod;
     }
 

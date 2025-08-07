@@ -19,8 +19,8 @@ public class PlayManager : MonoBehaviour
 
     [SerializeField] private Transform discardPile;
 
-    [SerializeField] private PlayerStatsSO playerStats;
-    [SerializeField] private PlayerStatsSO opponentStats;
+    //[SerializeField] private PlayerStatsSO playerStats;
+    //[SerializeField] private PlayerStatsSO opponentStats;
 
     [SerializeField] private HealthManager playerHealth;
     [SerializeField] private HealthManager opponentHealth;
@@ -123,8 +123,8 @@ public class PlayManager : MonoBehaviour
         timelineManager = GetComponent<TimelineManager>();
         player1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player>();
         player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player>();
-        deckManagerPlayer = player1.GetComponentInChildren<DeckManager>();
-        deckManagerOpponent = player2.GetComponentInChildren<DeckManager>();
+        deckManagerPlayer = player1.deckManager;
+        deckManagerOpponent = player2.deckManager;
         // positions = new int[20];
         // for (int i =  0; i < positions.Length; i++)
         // {
@@ -380,7 +380,7 @@ public class PlayManager : MonoBehaviour
         {
             for (int i = GetCurrentPlayer().lastPointEvaluated; i < newPoint.index; i++)
             {
-                Action idleAction = new Action(GetCurrentPlayerType(), PlayerState.Idle, 0);
+                Action idleAction = new Action(GetCurrentPlayerType(), PlayerState.Idle, 0, "");
                 AddActionToPointsInTime(idleAction, i, 1, 0);
             }
         }
@@ -579,12 +579,12 @@ public class PlayManager : MonoBehaviour
 
     public void EndTurn()
     {
-        Debug.Log(playersTurn.ToString() + " ended their turn");
+        //Debug.Log(playersTurn.ToString() + " ended their turn");
         timelineManager.SetIconsStatic();
         if (turnActions.Count == 0)
         {
             //Debug.Log("No actions to evaluate, adding idle action");
-            Action idleAction = new Action(GetCurrentPlayerType(), PlayerState.Idle, 50);
+            Action idleAction = new Action(GetCurrentPlayerType(), PlayerState.Idle, 50, "");
             Action previousAction = GetLastAction(GetCurrentPlayerType());
 
             int lastPlayerActionIndex = GetLastActiveIndex(GetCurrentPlayerType());
@@ -730,7 +730,7 @@ public class PlayManager : MonoBehaviour
         if (point.evaluated) return;
         Action playerAction = point.playerAction;
         Action opponentAction = point.opponentAction;
-        //Debug.Log("Evaluate point " + point.index + " player animation? " + point.playerAnimationName);
+        Debug.Log("Evaluate point " + point.index);
         //Debug.Log("Evaluate point " + point.index + " opponent animation? " + point.opponentAnimationName);
         if (point.playerAnimationName != null) player1.StartAnimation(point.playerAnimationName);
         if (point.opponentAnimationName != null) player2.StartAnimation(point.opponentAnimationName);
@@ -745,6 +745,7 @@ public class PlayManager : MonoBehaviour
                     Action feintedAction = deckManagerPlayer.feintedAction;
                     feintedAction.icon.SetActive(false);
                     deckManagerPlayer.AddCardToHand(feintedAction);
+                    deckManagerPlayer.DrawCards(1);
                 }
                 else if (playerAction is AttackAction playerAttack)
                 {
@@ -770,6 +771,7 @@ public class PlayManager : MonoBehaviour
                     Action feintedAction = deckManagerOpponent.feintedAction;
                     feintedAction.icon.SetActive(false);
                     deckManagerOpponent.AddCardToHand(feintedAction);
+                    deckManagerOpponent.DrawCards(1);
                 }
                 else if (opponentAction is AttackAction opponentAttack)
                 {
@@ -840,7 +842,7 @@ public class PlayManager : MonoBehaviour
         }
         else if (effect == Effect.Hit)
         {
-            if (IsAttackCritical(attackAction.acurracy))
+            if (IsAttackCritical(attackAction.accuracy + attackingPlayer.GetAccuracyModifier()))
             {
                 //Debug.Log("Critical");
                 critTxt.SetActive(true);
@@ -865,7 +867,7 @@ public class PlayManager : MonoBehaviour
     public void AddStun(PlayerType player, PointInTime point, int indicesActive)
     {
         int pointIndex = point.index;
-        Action stunAction = new Action(player, PlayerState.Stunned, indicesActive);
+        Action stunAction = new Action(player, PlayerState.Stunned, indicesActive, "");
         //Debug.Log("Add " + indicesActive +  "stun to " + player);
         stunAction.initialTime = point.time;
         stunAction.windUpTime = indicesActive * 50;

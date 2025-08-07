@@ -58,6 +58,14 @@ public class HealthManager : MonoBehaviour
         if (currentStagger >= 25) KnockOut();
     }
 
+    public void DecreaseStagger(int heal)
+    {
+        currentStagger -= heal;
+        currentStagger = Mathf.Clamp(currentStagger, 0, maxStagger);
+        UpdateStaggerBar();
+        if (currentStagger < 0) KnockOut();
+    }
+
     public void Breathe(int length)
     {
         currentStagger -= length * 2;

@@ -4,6 +4,7 @@ public class SpecialBehaviour : MonoBehaviour
 {
     [SerializeField] private int CreatineNumberOfCards;
     [SerializeField] private int proteinDamageModifier;
+    [SerializeField] private int scratchStaggerRemoval;
 
     private Action action;
     private GameObject instinctPanel;
@@ -32,6 +33,8 @@ public class SpecialBehaviour : MonoBehaviour
             case "Protein Shake": ProteinShake(); break;
             case "Feint": Feint(); break;
             case "Instinct": Instinct(); break;
+            case "Sheer Dumb Luck": SheerDumbLuck(); break;
+            case "But A Scratch": ButAScratch(); break;
         }
     }
 
@@ -50,7 +53,7 @@ public class SpecialBehaviour : MonoBehaviour
     private void Feint()
     {
         //Debug.Log("Feint");
-        Action feintAction = new AttackAction(6, PlayerState.Feint, "Feint", AttackType.Feint, Hand.Rear, AttackRange.Pocket, 150, 0, 0, 0, 0, action.playerType);
+        Action feintAction = new AttackAction(6, PlayerState.Feint, "Feint", AttackType.Feint, Hand.Rear, AttackRange.Pocket, 150, 0, 0, 0, 0, action.playerType, "Play on an attack, the attack is replaced in your hand, draw a card");
         playManager.AddActionToTurn(feintAction);
     }
 
@@ -60,5 +63,15 @@ public class SpecialBehaviour : MonoBehaviour
         // Can be played as any attack or defence card
         instinctPanel.SetActive(true);
         instinctPanel.GetComponent<InstinctPanel>().DisplayPanel();
+    }
+
+    private void SheerDumbLuck()
+    {
+        player.accuracyModifier += 50;
+    }
+
+    private void ButAScratch()
+    {
+        player.healthManager.DecreaseStagger(scratchStaggerRemoval);
     }
 }

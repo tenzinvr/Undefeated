@@ -40,8 +40,8 @@ public class TimelineManager : MonoBehaviour
         timeScale = pointInTimeWidth / (50.0f / 1000.0f);
         player1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player>();
         player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player>();
-        deckManagerPlayer = player1.GetComponentInChildren<DeckManager>();
-        deckManagerOpponent = player2.GetComponentInChildren<DeckManager>();
+        deckManagerPlayer = player1.deckManager;
+        deckManagerOpponent = player2.deckManager;
         currentPointInTimeTransform = rectTransform.localPosition;
         previewIcon = GameObject.Instantiate(iconPrefab);
         previewIcon.SetActive(false); 

@@ -13,21 +13,24 @@ public class OpponentBehaviour : MonoBehaviour
     private bool cardFound;
     [SerializeField] private int feintChance = 50; // Chance to play feint, 0-100
 
-    private DeckManager deckManager;
+    public DeckManager deckManager;
     private PlayManager playManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        deckManager = GetComponentInChildren<DeckManager>();
         playManager = GameObject.FindGameObjectWithTag("Timeline").GetComponent<PlayManager>();
-        //Debug.Log("opponent start");
+        Debug.Log("Deckmanager null? " + (deckManager == null));
+        deckManager.Initiate();
+        deckManager.Shuffle();
+        deckManager.DrawCards();
         hand = deckManager.cardsInHand;
     }
 
     public void StartTurn()
     {
         hand = deckManager.cardsInHand;
+        Debug.Log("Hand size = " + hand.Count);
         CheckForCreatine();
         cardFound = false;
         currentIndex = playManager.GetLastActiveIndex(PlayerType.Opponent);
@@ -68,7 +71,7 @@ public class OpponentBehaviour : MonoBehaviour
         }
         if (!cardFound)
         {
-            Debug.Log("Card not found breathe");
+            //Debug.Log("Card not found breathe");
             Breathe();
         }
     }
@@ -91,7 +94,7 @@ public class OpponentBehaviour : MonoBehaviour
 
     private void CheckForSpecials()
     {
-        Debug.Log("Check for specials");
+        //Debug.Log("Check for specials");
         foreach (Action action in hand)
         {
             if (action is SpecialAction specialAction)
@@ -102,7 +105,7 @@ public class OpponentBehaviour : MonoBehaviour
 
     private void PlaceDefence(Action attack, Action defence)
     {
-        Debug.Log("Place defence");
+        //Debug.Log("Place defence");
         cardFound = true;
         int endPoint = attack.timeOfEffect / 50;
         int difference = defence.windUpTime / 50;
@@ -112,7 +115,7 @@ public class OpponentBehaviour : MonoBehaviour
 
     private bool TryAttackBeforePlayer(AttackAction playerAttack)
     {
-        Debug.Log("Attack before player");
+        //Debug.Log("Attack before player");
         foreach (Action action in hand)
         {
             if (action is AttackAction attackAction)
@@ -130,7 +133,7 @@ public class OpponentBehaviour : MonoBehaviour
 
     private void DecideOnAttack()
     {
-        Debug.Log("Decide on attak");
+        //Debug.Log("Decide on attak");
         if (previousAction is AttackAction prevAttack)
         {
             foreach (Action action in hand)
@@ -202,7 +205,7 @@ public class OpponentBehaviour : MonoBehaviour
 
     private void Feint()
     {
-        Action feintAction = new AttackAction(6, PlayerState.Feint, "Feint", AttackType.Feint, Hand.Rear, AttackRange.Pocket, 150, 0, 0, 0, 0, PlayerType.Opponent);
+        Action feintAction = new AttackAction(6, PlayerState.Feint, "Feint", AttackType.Feint, Hand.Rear, AttackRange.Pocket, 150, 0, 0, 0, 0, PlayerType.Opponent, "Play on an attack, the attack is replaced in your hand, draw a card");
         playManager.AddActionToTurn(feintAction);
 
     }

@@ -11,6 +11,10 @@ TagManager:
   - DeathUI
   - Card
   - InstinctPanel
+  - Hand
+  - CardDatabase
+  - Discard
+  - OpponentHand
   layers:
   - Default
   - TransparentFX

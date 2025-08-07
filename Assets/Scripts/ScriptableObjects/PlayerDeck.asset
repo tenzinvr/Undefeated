@@ -1,0 +1,560 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a49f407fded10c4eb4c794187354b7b, type: 3}
+  m_Name: PlayerDeck
+  m_EditorClassIdentifier: 
+  cardDatabase: {fileID: 0}
+  cardsInPlay: []
+  cardsInHand:
+  - playerState: 9
+    playerType: 0
+    id: 2
+    name: Cross
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 450
+    timeOfEffect: 0
+    returnTime: 200
+    description: Powerful straight, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 0
+    playerType: 0
+    id: 18
+    name: Feint
+    type: 2
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 0
+    timeOfEffect: 0
+    returnTime: 0
+    description: Play on top of an attack, retrieve the attack card
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 10
+    playerType: 0
+    id: 3
+    name: Lead Hook
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 450
+    timeOfEffect: 0
+    returnTime: 200
+    description: Fast, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 8
+    playerType: 0
+    id: 1
+    name: Jab
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 350
+    timeOfEffect: 0
+    returnTime: 100
+    description: Fast straight, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 0
+    playerType: 0
+    id: 18
+    name: Feint
+    type: 2
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 0
+    timeOfEffect: 0
+    returnTime: 0
+    description: Play on top of an attack, retrieve the attack card
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 8
+    playerType: 0
+    id: 1
+    name: Jab
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 350
+    timeOfEffect: 0
+    returnTime: 100
+    description: Fast straight, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 6
+    playerType: 0
+    id: 8
+    name: Slip
+    type: 1
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 200
+    timeOfEffect: 0
+    returnTime: 100
+    description: Counters straights and uppercuts
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 8
+    playerType: 0
+    id: 1
+    name: Jab
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 350
+    timeOfEffect: 0
+    returnTime: 100
+    description: Fast straight, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 7
+    playerType: 0
+    id: 7
+    name: Bob
+    type: 1
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 200
+    timeOfEffect: 0
+    returnTime: 100
+    description: Counters hooks
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 11
+    playerType: 0
+    id: 6
+    name: Rear Uppercut
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 600
+    timeOfEffect: 0
+    returnTime: 300
+    description: Powerful, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 9
+    playerType: 0
+    id: 2
+    name: Cross
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 450
+    timeOfEffect: 0
+    returnTime: 200
+    description: Powerful straight, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 6
+    playerType: 0
+    id: 8
+    name: Slip
+    type: 1
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 200
+    timeOfEffect: 0
+    returnTime: 100
+    description: Counters straights and uppercuts
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 8
+    playerType: 0
+    id: 1
+    name: Jab
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 350
+    timeOfEffect: 0
+    returnTime: 100
+    description: Fast straight, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 0
+    playerType: 0
+    id: 18
+    name: Feint
+    type: 2
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 0
+    timeOfEffect: 0
+    returnTime: 0
+    description: Play on top of an attack, retrieve the attack card
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 0
+    playerType: 0
+    id: 18
+    name: Feint
+    type: 2
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 0
+    timeOfEffect: 0
+    returnTime: 0
+    description: Play on top of an attack, retrieve the attack card
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 11
+    playerType: 0
+    id: 6
+    name: Rear Uppercut
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 600
+    timeOfEffect: 0
+    returnTime: 300
+    description: Powerful, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 0
+    playerType: 0
+    id: 18
+    name: Feint
+    type: 2
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 0
+    timeOfEffect: 0
+    returnTime: 0
+    description: Play on top of an attack, retrieve the attack card
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 6
+    playerType: 0
+    id: 8
+    name: Slip
+    type: 1
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 200
+    timeOfEffect: 0
+    returnTime: 100
+    description: Counters straights and uppercuts
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 7
+    playerType: 0
+    id: 7
+    name: Bob
+    type: 1
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 200
+    timeOfEffect: 0
+    returnTime: 100
+    description: Counters hooks
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 6
+    playerType: 0
+    id: 8
+    name: Slip
+    type: 1
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 200
+    timeOfEffect: 0
+    returnTime: 100
+    description: Counters straights and uppercuts
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 10
+    playerType: 0
+    id: 4
+    name: Rear Hook
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 450
+    timeOfEffect: 0
+    returnTime: 200
+    description: Powerful, countered by bobs
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 6
+    playerType: 0
+    id: 8
+    name: Slip
+    type: 1
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 200
+    timeOfEffect: 0
+    returnTime: 100
+    description: Counters straights and uppercuts
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 0
+    playerType: 0
+    id: 18
+    name: Feint
+    type: 2
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 0
+    timeOfEffect: 0
+    returnTime: 0
+    description: Play on top of an attack, retrieve the attack card
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 9
+    playerType: 0
+    id: 2
+    name: Cross
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 450
+    timeOfEffect: 0
+    returnTime: 200
+    description: Powerful straight, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 0
+    playerType: 0
+    id: 18
+    name: Feint
+    type: 2
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 0
+    timeOfEffect: 0
+    returnTime: 0
+    description: Play on top of an attack, retrieve the attack card
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 10
+    playerType: 0
+    id: 3
+    name: Lead Hook
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 450
+    timeOfEffect: 0
+    returnTime: 200
+    description: Fast, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 0
+    playerType: 0
+    id: 18
+    name: Feint
+    type: 2
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 0
+    timeOfEffect: 0
+    returnTime: 0
+    description: Play on top of an attack, retrieve the attack card
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 9
+    playerType: 0
+    id: 2
+    name: Cross
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 450
+    timeOfEffect: 0
+    returnTime: 200
+    description: Powerful straight, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 9
+    playerType: 0
+    id: 2
+    name: Cross
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 450
+    timeOfEffect: 0
+    returnTime: 200
+    description: Powerful straight, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 10
+    playerType: 0
+    id: 3
+    name: Lead Hook
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 450
+    timeOfEffect: 0
+    returnTime: 200
+    description: Fast, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 10
+    playerType: 0
+    id: 3
+    name: Lead Hook
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 450
+    timeOfEffect: 0
+    returnTime: 200
+    description: Fast, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 10
+    playerType: 0
+    id: 3
+    name: Lead Hook
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 450
+    timeOfEffect: 0
+    returnTime: 200
+    description: Fast, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 0
+    playerType: 0
+    id: 18
+    name: Feint
+    type: 2
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 0
+    timeOfEffect: 0
+    returnTime: 0
+    description: Play on top of an attack, retrieve the attack card
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 9
+    playerType: 0
+    id: 2
+    name: Cross
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 450
+    timeOfEffect: 0
+    returnTime: 200
+    description: Powerful straight, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 9
+    playerType: 0
+    id: 2
+    name: Cross
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 450
+    timeOfEffect: 0
+    returnTime: 200
+    description: Powerful straight, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 11
+    playerType: 0
+    id: 5
+    name: Lead Uppercut
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 600
+    timeOfEffect: 0
+    returnTime: 300
+    description: Fast, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 11
+    playerType: 0
+    id: 5
+    name: Lead Uppercut
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 600
+    timeOfEffect: 0
+    returnTime: 300
+    description: Fast, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 9
+    playerType: 0
+    id: 2
+    name: Cross
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 450
+    timeOfEffect: 0
+    returnTime: 200
+    description: Powerful straight, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 6
+    playerType: 0
+    id: 8
+    name: Slip
+    type: 1
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 200
+    timeOfEffect: 0
+    returnTime: 100
+    description: Counters straights and uppercuts
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  - playerState: 11
+    playerType: 0
+    id: 6
+    name: Rear Uppercut
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 600
+    timeOfEffect: 0
+    returnTime: 300
+    description: Powerful, countered by slips
+    icon: {fileID: 4295962164012594114, guid: a3500719d4ca57f4eaf107d2624b66fb, type: 3}
+  deckPanel: {fileID: 0}
+  handPanel: {fileID: 0}
+  discardPanel: {fileID: 0}
+  instinctPanel: {fileID: 0}
+  player: 0
+  cardPrefab: {fileID: 3668484586423260294, guid: 515c81f890e60fc49b35a7ba9a296c53, type: 3}
+  specialCardPrefab: {fileID: 3668484586423260294, guid: 1999979aed36f51478b2db6d3420da90, type: 3}
+  feintedAction:
+    playerState: 0
+    playerType: 0
+    id: 0
+    name: 
+    type: 0
+    initialIndex: 0
+    endIndex: 0
+    initialTime: 0
+    windUpTime: 0
+    timeOfEffect: 0
+    returnTime: 0
+    description: 
+    icon: {fileID: 0}
+  deckSize: 78
+  handSize: 7

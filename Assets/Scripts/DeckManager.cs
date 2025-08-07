@@ -6,9 +6,10 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class DeckManager : MonoBehaviour
+[CreateAssetMenu(fileName = "Deck", menuName = "Deck")]
+public class DeckManager : ScriptableObject
 {
-    private CardDatabase cardDatabase;
+    [SerializeField] private CardDatabase cardDatabase;
     public Stack<Action> deck = new Stack<Action>();
     public Stack<Action> drawPile = new Stack<Action>();
     public Stack<Action> discardPile = new Stack<Action>();
@@ -21,10 +22,10 @@ public class DeckManager : MonoBehaviour
     [SerializeField] private GameObject deckPanel;
     [SerializeField] private HandPanel handPanel;
     [SerializeField] private GameObject discardPanel;
-    [SerializeField] private GameObject displayPlayedCardPanel;
+    //[SerializeField] private GameObject displayPlayedCardPanel;
     private int currentCardIndex;
 
-    public GameObject retrieveActionPanel;
+    public GameObject instinctPanel;
 
     [SerializeField] private PlayerType player = PlayerType.Player;
     [SerializeField] private GameObject cardPrefab;
@@ -39,12 +40,17 @@ public class DeckManager : MonoBehaviour
     private TimelineManager timelineManager;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Initiate()
     {
-        cardDatabase = GameObject.FindAnyObjectByType<CardDatabase>();
+        cardDatabase = GameObject.FindGameObjectWithTag("CardDatabase").GetComponent<CardDatabase>();
+        //Debug.Log("Card database null? " + (cardDatabase == null));
         timelineManager = GameObject.FindGameObjectWithTag("Timeline").GetComponent<TimelineManager>();
+        handPanel = player == PlayerType.Player ? GameObject.FindGameObjectWithTag("Hand").GetComponent<HandPanel>() : GameObject.FindGameObjectWithTag("OpponentHand").GetComponent<HandPanel>();
+        Debug.Log(handPanel.name);
+        instinctPanel = GameObject.FindGameObjectWithTag("InstinctPanel");
+        discardPanel = GameObject.FindGameObjectWithTag("Discard");
         usedCards = new List<GameObject>();
+        cardsInHand.Clear();
 
         deck.Push(cardDatabase.GetCard("Jab", player));
         deck.Push(cardDatabase.GetCard("Jab", player));
@@ -77,15 +83,6 @@ public class DeckManager : MonoBehaviour
         deck.Push(cardDatabase.GetCard("Slip", player));
         deck.Push(cardDatabase.GetCard("Slip", player));
 
-        deck.Push(cardDatabase.GetCard("Wild Swing", player));
-        deck.Push(cardDatabase.GetCard("Wild Swing", player));
-        deck.Push(cardDatabase.GetCard("Creatine", player));
-        deck.Push(cardDatabase.GetCard("Creatine", player));
-        deck.Push(cardDatabase.GetCard("Creatine", player));
-        deck.Push(cardDatabase.GetCard("Instinct", player));
-        deck.Push(cardDatabase.GetCard("Instinct", player));
-        deck.Push(cardDatabase.GetCard("Hard Head", player));
-        deck.Push(cardDatabase.GetCard("Hard Head", player));
         deck.Push(cardDatabase.GetCard("Feint", player));
         deck.Push(cardDatabase.GetCard("Feint", player));
         deck.Push(cardDatabase.GetCard("Feint", player));
@@ -94,9 +91,14 @@ public class DeckManager : MonoBehaviour
         deck.Push(cardDatabase.GetCard("Feint", player));
 
         deckSize = deck.Count;
+    }
 
-        Shuffle();
-        DrawCards(handSize);
+    public void AddCardToDeck(string name, int number)
+    {
+        for (int i = 0; i <= number; i++)
+        {
+            deck.Push(cardDatabase.GetCard(name, player));
+        }
     }
 
     public void Shuffle()
@@ -130,8 +132,9 @@ public class DeckManager : MonoBehaviour
         Shuffle();
     }
 
-    public void DrawCards(int numberOfCards)
+    public void DrawCards(int numberOfCards = 7)
     {
+        //Debug.Log("Num cards to draw " + numberOfCards);
         for (int i = 0; i <= numberOfCards; i++)
         {
             if (drawPile.Count == 0)
@@ -167,6 +170,7 @@ public class DeckManager : MonoBehaviour
 
     public void AddCardToPanel(Transform panelTransform, Action action)
     {
+        Debug.Log("Add card " + action.name + " to panel " + panelTransform.name);
         GameObject cardObj = Instantiate(cardPrefab, panelTransform);
         CardBehaviour cardBehaviour = cardObj.GetComponent<CardBehaviour>();
         if (cardBehaviour != null)
@@ -180,13 +184,16 @@ public class DeckManager : MonoBehaviour
     public void CardUsed(GameObject card)
     {
         //Debug.Log("Card used: " + card.name);
-        StartCoroutine(DisplayUsedCard(card));
+        //StartCoroutine(DisplayUsedCard(card));
+        //card.transform.SetParent(displayPlayedCardPanel.transform, false);
+        handPanel.SetCardPositions();
+        card.transform.SetParent(discardPanel.transform, false);
     }
 
     public void CardUsed(Action action)
     {
         Debug.Log("Card used: " + action.name);
-        GameObject cardObj = Instantiate(cardPrefab, displayPlayedCardPanel.transform);
+        GameObject cardObj = Instantiate(cardPrefab, discardPanel.transform);
         cardObj.name = "New card";
         CardBehaviour cardBehaviour = cardObj.GetComponent<CardBehaviour>();
         if (cardBehaviour != null)
@@ -194,16 +201,18 @@ public class DeckManager : MonoBehaviour
             //cardBehaviour.displayId = drawnCard.id;
             cardBehaviour.SetAction(action);
         }
-        StartCoroutine(DisplayUsedCard(cardObj));
+        //StartCoroutine(DisplayUsedCard(card));
+        //cardObj.transform.SetParent(displayPlayedCardPanel.transform, false);
+        handPanel.SetCardPositions();
+        cardObj.transform.SetParent(discardPanel.transform, false);
     }
 
-    private IEnumerator DisplayUsedCard(GameObject card)
-    { 
-        card.transform.SetParent(displayPlayedCardPanel.transform, false);
-        handPanel.SetCardPositions();
-        yield return new WaitForSeconds(1);
-        card.transform.SetParent(discardPanel.transform, false);
-    }
+    //private IEnumerator DisplayUsedCard(GameObject card)
+    //{ 
+    //    card.transform.SetParent(displayPlayedCardPanel.transform, false);
+    //    handPanel.SetCardPositions();
+    //    card.transform.SetParent(discardPanel.transform, false);
+    //}
 
     public void ActionUsed(Action action)
     {
@@ -242,10 +251,10 @@ public class DeckManager : MonoBehaviour
     {
         foreach (GameObject card in usedCards)
         {
-            card.transform.SetParent(retrieveActionPanel.transform, false);
+            card.transform.SetParent(instinctPanel.transform, false);
             card.SetActive(true);
         }
-        retrieveActionPanel.SetActive(true);
+        instinctPanel.SetActive(true);
     }
 
 
@@ -263,10 +272,10 @@ public class DeckManager : MonoBehaviour
 
     private void RemoveRetrievableActionsMenu()
     {
-        foreach (GameObject card in usedCards)
-        {
-            card.transform.SetParent(transform, false);
-        }
-        retrieveActionPanel.SetActive(false);
+        //foreach (GameObject card in usedCards)
+        //{
+        //    card.transform.SetParent(transform, false);
+        //}
+        instinctPanel.SetActive(false);
     }
 }

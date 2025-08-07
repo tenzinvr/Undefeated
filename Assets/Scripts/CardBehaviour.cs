@@ -43,7 +43,7 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         playManager = GameObject.FindGameObjectWithTag("Timeline").GetComponent<PlayManager>();
         GameObject playerObj = (playerType == PlayerType.Player) ? GameObject.FindGameObjectWithTag("Player1")
             : GameObject.FindGameObjectWithTag("Player2");
-        deckManager = playerObj.GetComponentInChildren<DeckManager>();
+        deckManager = playerObj.GetComponentInChildren<Player>().deckManager;
     }
 
     public void SetAction(Action _action)
@@ -53,6 +53,10 @@ public class CardBehaviour : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         id = _action.id;
         cardName = _action.name;
         description = _action.description;
+        if (action is AttackAction attackAction)
+        {
+            description += new string("\nAccuracy: " + attackAction.accuracy + "\nDamage: 1 - " + attackAction.damage);
+        }
         cardType = action.type;
         //damage = card.damage;
         //knockBack = card.knockBack;

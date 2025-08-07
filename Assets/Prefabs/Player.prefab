@@ -32,7 +32,6 @@ RectTransform:
   m_Children:
   - {fileID: 5892226552833683556}
   - {fileID: 990202697994562865}
-  - {fileID: 2940557937499258871}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -57,6 +56,8 @@ MonoBehaviour:
   playerType: 0
   health: 100
   timeModifier: 0
+  damageModifier: 0
+  accuracyModifier: 0
   isBlocking: 0
   distance: 0
   stance: 0
@@ -71,65 +72,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522605545249923339}
   m_CullTransparentMesh: 1
---- !u!1 &1858584683019824956
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2940557937499258871}
-  - component: {fileID: 807479400330344809}
-  m_Layer: 0
-  m_Name: Deck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2940557937499258871
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858584683019824956}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 50.78177, y: -19.834625, z: -2.6432946}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4704755698753073645}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &807479400330344809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858584683019824956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a49f407fded10c4eb4c794187354b7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deck: []
-  drawPile: []
-  discardPile: []
-  cardsInPlay: []
-  cardsInHand: []
-  defenceMenu: {fileID: 0}
-  attackMenu: {fileID: 0}
-  specialMenu: {fileID: 0}
-  deckPanel: {fileID: 0}
-  handPanel: {fileID: 0}
-  retrieveActionPanel: {fileID: 0}
-  player: 0
-  cardPrefab: {fileID: 3668484586423260294, guid: 515c81f890e60fc49b35a7ba9a296c53, type: 3}
-  deckSize: 43
-  handSize: 10
 --- !u!1 &4130882254694548306
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,13 +164,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -294,7 +236,7 @@ RectTransform:
   m_GameObject: {fileID: 4758719691107913573}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4704755698753073645}

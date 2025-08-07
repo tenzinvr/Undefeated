@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      breath_icon_0: 6415666501534333436
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
